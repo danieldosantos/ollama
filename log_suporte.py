@@ -5,23 +5,26 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent
 
 def init_db():
-    conn = sqlite3.connect(str(BASE_DIR / "db.sqlite"))
-    cur = conn.cursor()
-    cur.execute("""
-        CREATE TABLE IF NOT EXISTS logs (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            pergunta TEXT,
-            resposta TEXT,
-            data TEXT
-        )
-    """)
-    conn.commit()
-    conn.close()
+    """Initialize the SQLite database."""
+    db_path = BASE_DIR / "db.sqlite"
+    with sqlite3.connect(db_path) as conn:
+        cur = conn.cursor()
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS logs (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                pergunta TEXT,
+                resposta TEXT,
+                data TEXT
+            )
+        """)
 
 def salvar_log(pergunta, resposta):
-    conn = sqlite3.connect(str(BASE_DIR / "db.sqlite"))
-    cur = conn.cursor()
-    cur.execute("INSERT INTO logs (pergunta, resposta, data) VALUES (?, ?, ?)",
-                (pergunta, resposta, datetime.now().isoformat()))
-    conn.commit()
-    conn.close()
+    """Save a question/answer pair to the log."""
+    db_path = BASE_DIR / "db.sqlite"
+    with sqlite3.connect(db_path) as conn:
+        cur = conn.cursor()
+        cur.execute(
+            "INSERT INTO logs (pergunta, resposta, data) VALUES (?, ?, ?)",
+            (pergunta, resposta, datetime.now().isoformat())
+        )
+
