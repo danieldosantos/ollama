@@ -6,13 +6,18 @@ from langchain_ollama import OllamaEmbeddings, ChatOllama
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 from log_suporte import init_db, salvar_log
+from pathlib import Path
 import re
 
 app = Flask(__name__)
 init_db()
 
+# Caminho base do projeto
+BASE_DIR = Path(__file__).resolve().parent
+
 # 1. Carrega o conteúdo do .txt (UTF-8)
-loader = TextLoader("documentacao.txt", encoding="utf-8")
+documento = BASE_DIR / "documentacao.txt"
+loader = TextLoader(str(documento), encoding="utf-8")
 docs = loader.load()
 
 # 2. Split em chunks maiores
@@ -21,7 +26,7 @@ chunks = splitter.split_documents(docs)
 
 # 3. Embeddings e armazenamento vetorial com modelo gemma
 embedding = OllamaEmbeddings(model="gemma:2b")
-db = Chroma.from_documents(chunks, embedding, persist_directory="chroma_db")
+db = Chroma.from_documents(chunks, embedding, persist_directory=str(BASE_DIR / "chroma_db"))
 
 # 4. Modelo e retriever com contexto ampliado
 retriever = db.as_retriever(search_kwargs={"k": 8})
