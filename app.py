@@ -10,7 +10,7 @@ from pathlib import Path
 import re
 import numpy as np
 
-# Temporary workaround for NumPy 2.x compatibility with chromadb
+# Compatibilidade com NumPy 2.x e chromadb
 if not hasattr(np, "float_"):
     np.float_ = np.float64
 
@@ -20,29 +20,32 @@ init_db()
 # Caminho base do projeto
 BASE_DIR = Path(__file__).resolve().parent
 
-# 1. Carrega o conteúdo do .txt (UTF-8)
-documento = BASE_DIR / "documentacao.txt"
+# 1. Carrega o conteúdo do .txt estruturado
+documento = BASE_DIR / "documentacao_estruturada.txt"
 loader = TextLoader(str(documento), encoding="utf-8")
 docs = loader.load()
 
-# 2. Split em chunks maiores
-splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+# 2. Split em chunks maiores com separador de parágrafo
+splitter = CharacterTextSplitter(separator="\n\n", chunk_size=1600, chunk_overlap=200)
 chunks = splitter.split_documents(docs)
 
-# 3. Embeddings e armazenamento vetorial com modelo gemma
+# 3. Embeddings e armazenamento vetorial com persistência
 embedding = OllamaEmbeddings(model="gemma:2b")
 db = Chroma.from_documents(chunks, embedding, persist_directory=str(BASE_DIR / "chroma_db"))
+db.persist()
 
-# 4. Modelo e retriever com contexto ampliado
-retriever = db.as_retriever(search_kwargs={"k": 8})
+# 4. Retriever otimizado
+retriever = db.as_retriever(search_kwargs={"k": 10})
 llm = ChatOllama(model="gemma:2b", base_url="http://localhost:11434")
 
 # 5. Prompt reforçado
 template = (
-    "Você é C3PO, o assistente virtual oficial da plataforma Nexxo.\n"
-    "Responda sempre em português do Brasil, com clareza e objetividade.\n"
-    "Use apenas o conteúdo abaixo (extraído do manual) para responder com precisão.\n"
-    "Nunca diga que não sabe ou que o usuário deve consultar o manual. Se a informação estiver no texto, traga-a diretamente.\n\n"
+    "Você é C3PO, o assistente virtual da plataforma Nexxo.\n"
+    "Responda sempre em português do Brasil, de forma clara, direta e objetiva.\n"
+    "Use SOMENTE o conteúdo abaixo (extraído do manual oficial) para responder com exatidão.\n"
+    "NUNCA diga que a informação está no manual. NUNCA diga para consultar o manual.\n"
+    "Se a resposta estiver no texto, transcreva exatamente como está, respeitando a ordem, termos e formatação.\n"
+    "Se for um passo a passo, reproduza fielmente, sem alterar ou resumir.\n\n"
     "Contexto:\n{context}\n\n"
     "Pergunta: {question}\n"
     "Resposta:"
@@ -52,6 +55,7 @@ prompt = PromptTemplate.from_template(template)
 qa = RetrievalQA.from_chain_type(
     llm=llm,
     retriever=retriever,
+    chain_type="stuff",
     chain_type_kwargs={"prompt": prompt}
 )
 

@@ -1,0 +1,63 @@
+MANUAL DA PLATAFORMA NEXXO (ESTRUTURADO)
+
+====================================
+1. PUBLICANDO UMA NOVA CARGA
+====================================
+1. Menu à esquerda > "Fretes" > "Criar Frete" ou "Novo Frete".
+2. Origem da Carga: "Parada 1" + endereço + tipo + operação.
+3. Destinos: paradas intermediárias ou destino final.
+4. Reorganize etapas com arrastar e soltar.
+5. Informações da Carga: tipo, produto, obrigatoriedades, datas.
+6. Informações do Veículo: tipo de veículo e carroceria.
+7. Pagamento: simulação com tabela.
+8. Atribuição de Motoristas: "Atribuir motoristas ao Frete".
+9. Informações do Frete: agendamento + diferenciais + observações.
+10. Clique em "Criar Frete".
+
+====================================
+2. CADASTRANDO UM NOVO TRANSPORTADOR
+====================================
+1. Acesse a área "Transportadoras".
+2. Clique em "Cadastrar Nova".
+3. Preencha os dados obrigatórios: Razão Social, CNPJ, Telefone.
+4. Salve para concluir o cadastro.
+
+====================================
+3. ATRIBUINDO UM MOTORISTA A UM FRETE
+====================================
+1. Vá em "Fretes Abertos".
+2. Selecione o frete desejado.
+3. Clique em "Atribuir Motorista".
+4. Selecione o motorista cadastrado.
+5. Confirme a atribuição.
+
+====================================
+4. MONITORANDO UMA CARGA EM TEMPO REAL
+====================================
+1. Acesse o menu "Monitoramento".
+2. Selecione a carga ativa.
+3. Visualize a rota no mapa em tempo real.
+4. Verifique paradas, atrasos e estimativa de chegada.
+
+====================================
+5. ENVIANDO NOTIFICAÇÃO PARA O MOTORISTA
+====================================
+1. Acesse "Comunicações".
+2. Selecione o motorista e clique em "Enviar Mensagem".
+3. Escreva a notificação e clique em "Enviar".
+4. O motorista será notificado via app ou WhatsApp.
+
+====================================
+6. CONSULTANDO HISTÓRICO DE FRETES
+====================================
+1. Acesse o menu "Histórico".
+2. Use os filtros de data, status e transportadora.
+3. Clique em um frete para visualizar os detalhes.
+
+====================================
+7. CANCELANDO UM FRETE PUBLICADO
+====================================
+1. Acesse "Fretes".
+2. Clique no frete publicado.
+3. Selecione "Cancelar Frete".
+4. Confirme a ação.
