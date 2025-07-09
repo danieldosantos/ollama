@@ -19,13 +19,13 @@ docs = loader.load()
 splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
 chunks = splitter.split_documents(docs)
 
-# 3. Embeddings e armazenamento vetorial
-embedding = OllamaEmbeddings(model="deepseek-r1:8b")
+# 3. Embeddings e armazenamento vetorial com modelo gemma
+embedding = OllamaEmbeddings(model="gemma:2b")
 db = Chroma.from_documents(chunks, embedding, persist_directory="chroma_db")
 
 # 4. Modelo e retriever com contexto ampliado
 retriever = db.as_retriever(search_kwargs={"k": 8})
-llm = ChatOllama(model="deepseek-r1:8b", base_url="http://localhost:11434")
+llm = ChatOllama(model="gemma:2b", base_url="http://localhost:11434")
 
 # 5. Prompt reforçado
 template = (

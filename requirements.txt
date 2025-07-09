@@ -1,5 +1,6 @@
-flask
-langchain
-langchain-community
-ollama
-chromadb
+flask==2.3.3
+langchain==0.3.26
+langchain-community==0.3.27
+langchain-ollama==0.3.3
+chromadb==0.4.24
+numpy>=2.1.0
