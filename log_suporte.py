@@ -2,23 +2,25 @@ import sqlite3
 from datetime import datetime
 
 def init_db():
-    conn = sqlite3.connect("db.sqlite")
-    cur = conn.cursor()
-    cur.execute("""
+    """Initialize the SQLite database."""
+    with sqlite3.connect("db.sqlite") as conn:
+        cur = conn.cursor()
+        cur.execute(
+            """
         CREATE TABLE IF NOT EXISTS logs (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             pergunta TEXT,
             resposta TEXT,
             data TEXT
         )
-    """)
-    conn.commit()
-    conn.close()
+        """
+        )
 
 def salvar_log(pergunta, resposta):
-    conn = sqlite3.connect("db.sqlite")
-    cur = conn.cursor()
-    cur.execute("INSERT INTO logs (pergunta, resposta, data) VALUES (?, ?, ?)",
-                (pergunta, resposta, datetime.now().isoformat()))
-    conn.commit()
-    conn.close()
+    """Save a question/answer pair to the log."""
+    with sqlite3.connect("db.sqlite") as conn:
+        cur = conn.cursor()
+        cur.execute(
+            "INSERT INTO logs (pergunta, resposta, data) VALUES (?, ?, ?)",
+            (pergunta, resposta, datetime.now().isoformat()),
+        )
