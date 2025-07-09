@@ -8,6 +8,11 @@ from langchain.prompts import PromptTemplate
 from log_suporte import init_db, salvar_log
 from pathlib import Path
 import re
+import numpy as np
+
+# Temporary workaround for NumPy 2.x compatibility with chromadb
+if not hasattr(np, "float_"):
+    np.float_ = np.float64
 
 app = Flask(__name__)
 init_db()
