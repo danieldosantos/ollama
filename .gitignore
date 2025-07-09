@@ -1,0 +1,23 @@
+# Ambientes virtuais
+.venv/
+__pycache__/
+
+# Banco vetorial persistente
+chroma_db/
+db.sqlite
+
+# Arquivos de dados grandes ou locais
+*.pdf
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+
+# Sistema operacional e IDE
+.DS_Store
+*.swp
+*.swo
+.vscode/
+
+# Dependências
+.env

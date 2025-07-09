@@ -1,0 +1,45 @@
+Manual Detalhado de Utilização da Plataforma - Nexxo
+ 
+ SUMÁRIO
+ 1. Acessando a Plataforma NEXXO
+ 2. Publicando uma Nova Carga
+ 3. Seleção de Motoristas
+ 4. Acompanhamento da Busca e Negociação do Frete
+ 5. Notificando o Motorista
+ 6. Recursos e Informações Adicionais
+ 7. Banco de Dados de Motoristas
+ 8. Cadastro de Novos Transportadores
+
+ ACESSANDO A PLATAFORMA NEXXO- Acesse: https://stg-nexxo.wnslog.com/- Insira usuário e senha > Clique em "Continuar".- Suporte: WhatsApp +55 51 99765-3559
+ 
+ PUBLICANDO UMA NOVA CARGA
+ 1. Menu à esquerda > "Fretes" > "Criar Frete" ou "Novo Frete".
+ 2. Origem da Carga: "Parada 1" + endereço + tipo + operação.
+ 3. Destinos: paradas intermediárias ou destino final.
+ 4. Reorganize etapas com arrastar e soltar.
+ 5. Informações da Carga: tipo, produto, obrigatoriedades, datas.
+ 6. Informações do Veículo: tipo de veículo e carroceria.
+ 7. Pagamento: simulação com tabela.
+ 8. Atribuição de Motoristas: "Atribuir motoristas ao Frete".
+ 9. Informações do Frete: agendamento + diferenciais + observações.
+ 10. Clique em "Criar Frete".
+ 
+ SELEÇÃO DE MOTORISTAS- Defina motoristas prioritários por nome ou número.- Atribua múltiplos motoristas.
+
+ ACOMPANHAMENTO DA BUSCA E NEGOCIAÇÃO- "Viagens" = revisar status.- "Listagem de Fretes" = ver todos os fretes.- "Painel de Negociações" = chat com motoristas.
+ 
+ NOTIFICANDO O MOTORISTA- Frete enviado via WhatsApp.- Motoristas clicam em "Falar c/ Contratador".- Contratadores negociam com vários motoristas.- Status: Homologação, Aguardando Coleta, Em Trânsito, Entregue.- Se não for escolhido: a transportadora clica em  "Desconsiderar Motorista".
+ 
+ RECURSOS E INFORMAÇÕES ADICIONAIS- "Dados do Frete" = detalhes do frete.- "Pausar Frete" = negociação em andamento.- "Reativar Frete" e "Arquivar Frete".- "Finalizar Frete" após entrega.
+ 
+ BANCO DE DADOS DE MOTORISTAS- Menu "Transportadores".- Ver motoristas e veículos.
+ 
+ CADASTRO DE NOVOS TRANSPORTADORES
+ 1. Clique "Cadastrar Transportador".
+ 2. CNPJ ou CPF > dados > "Continuar".
+ 3. Dados do veículo > "Finalizar Cadastro".
+ 4. Adicione motoristas ou veículos vinculados.
+ 
+ SUPORTE
+ WhatsApp: +55 51 9765-3559
+ Link: https://api.whatsapp.com/send/?phone=555197653559
