@@ -71,14 +71,15 @@ prompt = PromptTemplate.from_template(template)
 # Filtro opcional por palavras-chave
 def aplicar_filtro_secao(pergunta):
     filtros = {
-        "frete": "Publicação de Nova Carga",
-        "motorista": "Seleção de Motoristas",
-        "negociação": "Acompanhamento de Frete e Negociação",
-        "notificação": "Notificações e Comunicação com Motoristas",
-        "comunicação": "Notificações e Comunicação com Motoristas",
-        "whatsapp": "Notificações e Comunicação com Motoristas",
-        "transportador": "Cadastro de Novos Transportadores",
-        "suporte": "Suporte Oficial"
+        "frete": "2. Publicação de Nova Carga (Criar Frete)",
+        "motorista": "3. Seleção de Motoristas",
+        "negociação": "4. Acompanhamento de Frete e Negociação",
+        "notificação": "5. Notificações e Comunicação com Motoristas",
+        "comunicacao": "5. Notificações e Comunicação com Motoristas",
+        "comunicação": "5. Notificações e Comunicação com Motoristas",
+        "whatsapp": "5. Notificações e Comunicação com Motoristas",
+        "transportador": "8. Cadastro de Novos Transportadores",
+        "suporte": "9. Suporte Oficial"
     }
     for palavra, secao in filtros.items():
         if palavra in pergunta.lower():
