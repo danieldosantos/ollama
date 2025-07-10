@@ -1,63 +1,52 @@
-MANUAL DA PLATAFORMA NEXXO (ESTRUTURADO)
+# Manual da Plataforma Nexxo - Estrutura Otimizada para LLM
 
-====================================
-1. PUBLICANDO UMA NOVA CARGA
-====================================
-1. Menu à esquerda > "Fretes" > "Criar Frete" ou "Novo Frete".
-2. Origem da Carga: "Parada 1" + endereço + tipo + operação.
-3. Destinos: paradas intermediárias ou destino final.
-4. Reorganize etapas com arrastar e soltar.
-5. Informações da Carga: tipo, produto, obrigatoriedades, datas.
-6. Informações do Veículo: tipo de veículo e carroceria.
-7. Pagamento: simulação com tabela.
-8. Atribuição de Motoristas: "Atribuir motoristas ao Frete".
-9. Informações do Frete: agendamento + diferenciais + observações.
-10. Clique em "Criar Frete".
+## 1. Acesso à Plataforma
+- Link de acesso: https://stg-nexxo.wnslog.com/
+- Faça login com usuário e senha, clique em "Continuar".
+- Suporte disponível via WhatsApp: +55 51 99765-3559
 
-====================================
-2. CADASTRANDO UM NOVO TRANSPORTADOR
-====================================
-1. Acesse a área "Transportadoras".
-2. Clique em "Cadastrar Nova".
-3. Preencha os dados obrigatórios: Razão Social, CNPJ, Telefone.
-4. Salve para concluir o cadastro.
+## 2. Publicação de Nova Carga (Criar Frete)
+1. Menu lateral > "Fretes" > "Criar Frete" ou "Novo Frete".
+2. Origem da Carga: preencher "Parada 1" com endereço, tipo e operação.
+3. Destinos: adicionar paradas intermediárias ou destino final.
+4. Reorganizar etapas com recurso de arrastar e soltar.
+5. Informações da Carga: incluir tipo, produto, obrigatoriedades e datas.
+6. Informações do Veículo: selecionar tipo e carroceria.
+7. Pagamento: realizar simulação com base na tabela.
+8. Atribuição de Motoristas: selecionar e atribuir motoristas ao frete.
+9. Informações do Frete: agendamento, diferenciais e observações.
+10. Finalizar com o botão "Criar Frete".
 
-====================================
-3. ATRIBUINDO UM MOTORISTA A UM FRETE
-====================================
-1. Vá em "Fretes Abertos".
-2. Selecione o frete desejado.
-3. Clique em "Atribuir Motorista".
-4. Selecione o motorista cadastrado.
-5. Confirme a atribuição.
+## 3. Seleção de Motoristas
+- Buscar motorista por nome ou número.
+- É permitido atribuir mais de um motorista a um frete.
 
-====================================
-4. MONITORANDO UMA CARGA EM TEMPO REAL
-====================================
-1. Acesse o menu "Monitoramento".
-2. Selecione a carga ativa.
-3. Visualize a rota no mapa em tempo real.
-4. Verifique paradas, atrasos e estimativa de chegada.
+## 4. Acompanhamento de Frete e Negociação
+- Visualizar todos os fretes em "Listagem de Fretes".
+- Consultar status em "Viagens".
+- Acessar "Painel de Negociações" para conversar com motoristas.
 
-====================================
-5. ENVIANDO NOTIFICAÇÃO PARA O MOTORISTA
-====================================
-1. Acesse "Comunicações".
-2. Selecione o motorista e clique em "Enviar Mensagem".
-3. Escreva a notificação e clique em "Enviar".
-4. O motorista será notificado via app ou WhatsApp.
+## 5. Notificações e Comunicação com Motoristas
+- Fretes são enviados automaticamente por WhatsApp.
+- Motoristas clicam em "Falar c/ Contratador" para iniciar contato.
+- Contratante pode negociar com múltiplos motoristas.
+- Status possíveis: Homologação, Aguardando Coleta, Em Trânsito, Entregue.
+- Se motorista não for escolhido, usar "Desconsiderar Motorista".
 
-====================================
-6. CONSULTANDO HISTÓRICO DE FRETES
-====================================
-1. Acesse o menu "Histórico".
-2. Use os filtros de data, status e transportadora.
-3. Clique em um frete para visualizar os detalhes.
+## 6. Gerenciamento de Fretes
+- "Dados do Frete": visualizar informações detalhadas.
+- "Pausar Frete": suspende a negociação temporariamente.
+- Outras ações disponíveis: Reativar, Arquivar, Finalizar Frete.
 
-====================================
-7. CANCELANDO UM FRETE PUBLICADO
-====================================
-1. Acesse "Fretes".
-2. Clique no frete publicado.
-3. Selecione "Cancelar Frete".
-4. Confirme a ação.
+## 7. Consulta de Transportadores
+- Acesse "Transportadores" no menu.
+- Visualize motoristas e veículos cadastrados.
+
+## 8. Cadastro de Novos Transportadores
+1. Clique em "Cadastrar Transportador".
+2. Informe CNPJ ou CPF e complete os dados.
+3. Adicione veículos e finalize o cadastro.
+
+## 9. Suporte Oficial
+- WhatsApp: +55 51 9765-3559
+- Link direto: https://api.whatsapp.com/send/?phone=555197653559
