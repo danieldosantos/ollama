@@ -26,7 +26,7 @@ loader = TextLoader(str(documento), encoding="utf-8")
 docs = loader.load()
 
 # 2. Split em chunks maiores com separador de parágrafo
-splitter = CharacterTextSplitter(separator="\n\n", chunk_size=1600, chunk_overlap=200)
+splitter = CharacterTextSplitter(separator="\n\n", chunk_size=1500, chunk_overlap=300)
 chunks = splitter.split_documents(docs)
 
 # 3. Embeddings e armazenamento vetorial com persistência
@@ -35,7 +35,7 @@ db = Chroma.from_documents(chunks, embedding, persist_directory=str(BASE_DIR / "
 db.persist()
 
 # 4. Retriever otimizado
-retriever = db.as_retriever(search_kwargs={"k": 10})
+retriever = db.as_retriever(search_kwargs={"k": 20})
 llm = ChatOllama(model="gemma:2b", base_url="http://localhost:11434")
 
 # 5. Prompt reforçado
@@ -44,8 +44,15 @@ template = (
     "Responda sempre em português do Brasil, de forma clara, direta e objetiva.\n"
     "Use SOMENTE o conteúdo abaixo (extraído do manual oficial) para responder com exatidão.\n"
     "NUNCA diga que a informação está no manual. NUNCA diga para consultar o manual.\n"
-    "Se a resposta estiver no texto, transcreva exatamente como está, respeitando a ordem, termos e formatação.\n"
+    "Se a resposta estiver no texto, transcreva exatamente como está.\n"
     "Se for um passo a passo, reproduza fielmente, sem alterar ou resumir.\n\n"
+    "Exemplo:\n"
+    "Pergunta: Como cadastrar um novo frete na plataforma?\n"
+    "Resposta: PUBLICANDO UMA NOVA CARGA\n"
+    "1. Menu à esquerda > \"Fretes\" > \"Criar Frete\" ou \"Novo Frete\".\n"
+    "2. Origem da Carga: \"Parada 1\" + endereço + tipo + operação.\n"
+    "...\n"
+    "(etc)\n\n"
     "Contexto:\n{context}\n\n"
     "Pergunta: {question}\n"
     "Resposta:"
@@ -55,7 +62,7 @@ prompt = PromptTemplate.from_template(template)
 qa = RetrievalQA.from_chain_type(
     llm=llm,
     retriever=retriever,
-    chain_type="stuff",
+    chain_type="map_reduce",
     chain_type_kwargs={"prompt": prompt}
 )
 
