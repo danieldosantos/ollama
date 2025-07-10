@@ -68,23 +68,6 @@ template = (
 )
 prompt = PromptTemplate.from_template(template)
 
-# Filtro opcional por palavras-chave
-def aplicar_filtro_secao(pergunta):
-    filtros = {
-        "frete": "2. Publicação de Nova Carga (Criar Frete)",
-        "motorista": "3. Seleção de Motoristas",
-        "negociação": "4. Acompanhamento de Frete e Negociação",
-        "notificação": "5. Notificações e Comunicação com Motoristas",
-        "comunicacao": "5. Notificações e Comunicação com Motoristas",
-        "comunicação": "5. Notificações e Comunicação com Motoristas",
-        "whatsapp": "5. Notificações e Comunicação com Motoristas",
-        "transportador": "8. Cadastro de Novos Transportadores",
-        "suporte": "9. Suporte Oficial",
-    }
-    for palavra, secao in filtros.items():
-        if palavra in pergunta.lower():
-            return {"secao": secao}
-    return {}
 
 # Cadeia QA base
 qa = RetrievalQA.from_chain_type(
@@ -102,8 +85,7 @@ def index():
     if request.method == "POST":
         pergunta = request.form["pergunta"]
 
-        filtro = aplicar_filtro_secao(pergunta)
-        retriever = VectorStoreRetriever(vectorstore=db, search_kwargs={"k": 8, "filter": filtro} if filtro else {"k": 8})
+        retriever = VectorStoreRetriever(vectorstore=db, search_kwargs={"k": 8})
         qa.retriever = retriever
 
         resultado = qa.invoke({"query": pergunta})
