@@ -1,6 +1,6 @@
 # Ollama Documentation Chatbot
 
-This project provides a simple Flask web application that lets you chat in Portuguese with an assistant named **C3PO**. The assistant answers questions based on the contents of `documentacao_estruturada.txt`, using [LangChain](https://python.langchain.com/) and the Ollama `gemma:2b` model. The manual is stored in this file and is automatically loaded when the application starts.
+This project provides a simple Flask web application that lets you chat in Portuguese with an assistant named **C3PO**. The assistant answers questions based on the contents of `documentacao_estruturada.txt`, using [LangChain](https://python.langchain.com/) and the Ollama `mistral` model. The manual is stored in this file and is automatically loaded when the application starts.
 
 ## Setup
 
@@ -14,7 +14,7 @@ This project provides a simple Flask web application that lets you chat in Portu
    pip install -r requirements.txt
    ```
 
-Make sure you have the Ollama service running locally with the `gemma:2b` model available.
+Make sure you have the Ollama service running locally with the `mistral` model available.
 
 ## Running the application
 
