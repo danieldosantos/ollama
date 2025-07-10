@@ -72,7 +72,7 @@ def index():
     resposta = ""
     if request.method == "POST":
         pergunta = request.form["pergunta"]
-        resultado = qa.invoke(pergunta)
+        resultado = qa.invoke({"query": pergunta})
         resposta_texto = resultado.get("result", "")
         resposta = re.sub(r"<think>.*?</think>", "", resposta_texto, flags=re.DOTALL).strip()
         salvar_log(pergunta, resposta)
