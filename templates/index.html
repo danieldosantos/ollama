@@ -61,6 +61,28 @@
       background-color: #e0a800;
     }
 
+    .sugestoes {
+      margin-top: 1.5rem;
+      padding-left: 0;
+    }
+
+    .sugestoes li {
+      list-style: none;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f1f3f5;
+      padding: 0.5rem;
+      border-radius: 8px;
+    }
+
+    .sugestoes button {
+      width: auto;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.875rem;
+    }
+
     .resposta {
       margin-top: 1.5rem;
       background-color: #e9ecef;
@@ -90,17 +112,47 @@
 <body>
   <div class="chat-container">
     <h1>Olá, eu sou o C3PO 🤖</h1>
-    <form method="post">
-      <textarea name="pergunta" placeholder="Digite sua pergunta sobre a plataforma Nexxo..." required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-    {% if resposta %}
-      <div class="resposta">
-        <strong>Resposta de C3PO:</strong><br>
-        {{ resposta }}
+  <form method="post">
+    <textarea name="pergunta" placeholder="Digite sua pergunta sobre a plataforma Nexxo..." required></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+  <ul class="sugestoes">
+    <li>
+      <span>Qual é o link de acesso à plataforma Nexxo?</span>
+      <button type="button" class="copiar" data-text="Qual é o link de acesso à plataforma Nexxo?">Copiar</button>
+    </li>
+    <li>
+      <span>Como faço login na plataforma?</span>
+      <button type="button" class="copiar" data-text="Como faço login na plataforma?">Copiar</button>
+    </li>
+    <li>
+      <span>Como criar um novo frete?</span>
+      <button type="button" class="copiar" data-text="Como criar um novo frete?">Copiar</button>
+    </li>
+    <li>
+      <span>Qual é o WhatsApp de suporte oficial?</span>
+      <button type="button" class="copiar" data-text="Qual é o WhatsApp de suporte oficial?">Copiar</button>
+    </li>
+  </ul>
+  {% if resposta %}
+    <div class="resposta">
+      <strong>Resposta de C3PO:</strong><br>
+      {{ resposta }}
       </div>
-    {% endif %}
-    <div class="footer">C3PO - Assistente oficial da Plataforma Nexxo</div>
+  {% endif %}
+  <div class="footer">C3PO - Assistente oficial da Plataforma Nexxo</div>
   </div>
+  <script>
+    document.querySelectorAll('.copiar').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const text = btn.dataset.text;
+        navigator.clipboard.writeText(text).then(() => {
+          const original = btn.textContent;
+          btn.textContent = 'Copiado!';
+          setTimeout(() => { btn.textContent = original; }, 1000);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
