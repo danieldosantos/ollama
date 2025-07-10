@@ -1,6 +1,4 @@
 from flask import Flask, render_template, request
-from langchain_community.document_loaders import TextLoader
-from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.vectorstores import Chroma
 from langchain_ollama import OllamaEmbeddings, ChatOllama
 from langchain.chains import RetrievalQA
@@ -24,29 +22,27 @@ init_db()
 BASE_DIR = Path(__file__).resolve().parent
 CHROMA_PATH = BASE_DIR / "chroma_db"
 
-# Carrega conteúdo do manual
+# Carrega todo o conteúdo do manual e cria documentos completos por linha
 arquivo_manual = BASE_DIR / "documentacao_estruturada.txt"
-loader = TextLoader(str(arquivo_manual), encoding="utf-8")
-docs = loader.load()
 
-# Detecta seções e aplica metadados
-def adicionar_metadados_por_secao(docs):
+def carregar_documentos(path: Path):
+    with open(path, "r", encoding="utf-8") as f:
+        texto = f.read()
+
     documentos = []
     secao_atual = "Geral"
-    for doc in docs:
-        texto = doc.page_content.strip()
-        linhas = texto.splitlines()
-        for linha in linhas:
-            if linha.strip().startswith("##"):
-                secao_atual = linha.replace("#", "").strip()
-            elif linha.strip():
-                documentos.append(Document(page_content=linha.strip(), metadata={"secao": secao_atual}))
+    for linha in texto.splitlines():
+        linha = linha.strip()
+        if not linha:
+            continue
+        if linha.startswith("##"):
+            secao_atual = linha.replace("#", "").strip()
+            continue
+        documentos.append(Document(page_content=linha, metadata={"secao": secao_atual}))
     return documentos
 
-# Split e metadados
-splitter = CharacterTextSplitter(separator="\n\n", chunk_size=2000, chunk_overlap=300)
-chunks = splitter.split_documents(docs)
-documentos_com_metadata = adicionar_metadados_por_secao(chunks)
+# Documentos com metadados de seção
+documentos_com_metadata = carregar_documentos(arquivo_manual)
 
 # Embeddings e persistência com Chroma
 embedding = OllamaEmbeddings(model="mistral")
