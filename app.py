@@ -62,7 +62,7 @@ prompt = PromptTemplate.from_template(template)
 qa = RetrievalQA.from_chain_type(
     llm=llm,
     retriever=retriever,
-    chain_type="map_reduce",
+    chain_type="stuff",
     chain_type_kwargs={"prompt": prompt}
 )
 
