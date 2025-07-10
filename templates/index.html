@@ -119,19 +119,43 @@
   <ul class="sugestoes">
     <li>
       <span>Qual é o link de acesso à plataforma Nexxo?</span>
-      <button type="button" class="copiar" data-text="Qual é o link de acesso à plataforma Nexxo?">Copiar</button>
+      <button type="button" class="perguntar" data-text="Qual é o link de acesso à plataforma Nexxo?">Perguntar</button>
     </li>
     <li>
       <span>Como faço login na plataforma?</span>
-      <button type="button" class="copiar" data-text="Como faço login na plataforma?">Copiar</button>
+      <button type="button" class="perguntar" data-text="Como faço login na plataforma?">Perguntar</button>
     </li>
     <li>
       <span>Como criar um novo frete?</span>
-      <button type="button" class="copiar" data-text="Como criar um novo frete?">Copiar</button>
+      <button type="button" class="perguntar" data-text="Como criar um novo frete?">Perguntar</button>
     </li>
     <li>
       <span>Qual é o WhatsApp de suporte oficial?</span>
-      <button type="button" class="copiar" data-text="Qual é o WhatsApp de suporte oficial?">Copiar</button>
+      <button type="button" class="perguntar" data-text="Qual é o WhatsApp de suporte oficial?">Perguntar</button>
+    </li>
+    <li>
+      <span>Como consultar o status de um frete na seção “Viagens”?</span>
+      <button type="button" class="perguntar" data-text="Como consultar o status de um frete na seção 'Viagens'?">Perguntar</button>
+    </li>
+    <li>
+      <span>Como acessar o Painel de Negociações para falar com motoristas?</span>
+      <button type="button" class="perguntar" data-text="Como acessar o Painel de Negociações para falar com motoristas?">Perguntar</button>
+    </li>
+    <li>
+      <span>Como adicionar paradas intermediárias ao criar um frete?</span>
+      <button type="button" class="perguntar" data-text="Como adicionar paradas intermediárias ao criar um frete?">Perguntar</button>
+    </li>
+    <li>
+      <span>Como pausar temporariamente um frete?</span>
+      <button type="button" class="perguntar" data-text="Como pausar temporariamente um frete?">Perguntar</button>
+    </li>
+    <li>
+      <span>Como cadastrar um transportador (CNPJ ou CPF) e adicionar veículos?</span>
+      <button type="button" class="perguntar" data-text="Como cadastrar um transportador (CNPJ ou CPF) e adicionar veículos?">Perguntar</button>
+    </li>
+    <li>
+      <span>Como desconsiderar um motorista que não foi escolhido?</span>
+      <button type="button" class="perguntar" data-text="Como desconsiderar um motorista que não foi escolhido?">Perguntar</button>
     </li>
   </ul>
   {% if resposta %}
@@ -143,14 +167,12 @@
   <div class="footer">C3PO - Assistente oficial da Plataforma Nexxo</div>
   </div>
   <script>
-    document.querySelectorAll('.copiar').forEach(btn => {
+    document.querySelectorAll('.perguntar').forEach(btn => {
       btn.addEventListener('click', () => {
         const text = btn.dataset.text;
-        navigator.clipboard.writeText(text).then(() => {
-          const original = btn.textContent;
-          btn.textContent = 'Copiado!';
-          setTimeout(() => { btn.textContent = original; }, 1000);
-        });
+        const textarea = document.querySelector('textarea[name="pergunta"]');
+        textarea.value = text;
+        textarea.form.submit();
       });
     });
   </script>
