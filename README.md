@@ -50,3 +50,12 @@ gunicorn app:app
 
 When using Gunicorn, the `if __name__ == "__main__":` block in `app.py` is not executed.
 Make sure the environment variable `FLASK_DEBUG` is unset or set to `0` so that debug mode is disabled in production.
+
+## Running tests
+
+Install the development dependencies and execute the test suite with:
+
+```bash
+pip install -r requirements-dev.txt
+pytest
+```
