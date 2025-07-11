@@ -16,6 +16,18 @@ This project provides a simple Flask web application that lets you chat in Portu
 
 Make sure you have the Ollama service running locally with the `mistral` model available.
 
+### Environment variables
+
+The application reads a few settings from environment variables:
+
+```bash
+export OLLAMA_BASE_URL="http://localhost:11434"  # URL of the Ollama service
+export OLLAMA_MODEL="mistral"                    # Model to load
+export FLASK_DEBUG=1                             # Enable Flask debug mode
+```
+
+If these variables are not set, the values above are used by default.
+
 ## Running the application
 
 Start the Flask server with:
