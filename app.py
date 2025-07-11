@@ -5,7 +5,7 @@ from log_suporte import init_db, salvar_log
 from pathlib import Path
 import logging
 import re
-from config import OLLAMA_BASE_URL, OLLAMA_MODEL, FLASK_DEBUG
+from config import OLLAMA_BASE_URL, OLLAMA_MODEL
 
 app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -65,4 +65,6 @@ def index():
     return render_template("index.html", resposta=resposta, manual_error=manual_error)
 
 if __name__ == "__main__":
-    app.run(debug=FLASK_DEBUG)
+    import os
+    debug_flag = os.getenv("FLASK_DEBUG", "false").lower() in ("1", "true", "yes")
+    app.run(debug=debug_flag)
