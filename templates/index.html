@@ -88,6 +88,12 @@
       background-color: #45545d;
     }
 
+    .erro {
+      color: red;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
     .resposta {
       margin-top: 1.5rem;
       background-color: #f0f0f0;
@@ -117,6 +123,9 @@
 <body>
   <div class="chat-container">
     <h1>Olá, eu sou o Prime 🤖</h1>
+    {% if manual_error %}
+      <div class="erro">{{ manual_error }}</div>
+    {% endif %}
     <form method="post">
       <textarea name="pergunta" placeholder="Digite sua pergunta sobre a plataforma Nexxo..." required></textarea>
       <button type="submit">Enviar</button>
