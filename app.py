@@ -4,6 +4,7 @@ from langchain.prompts import PromptTemplate
 from log_suporte import init_db, salvar_log
 from pathlib import Path
 import re
+from config import OLLAMA_BASE_URL, OLLAMA_MODEL, FLASK_DEBUG
 
 app = Flask(__name__)
 init_db()
@@ -17,7 +18,7 @@ with open(arquivo_manual, "r", encoding="utf-8") as f:
     manual_text = f.read()
 
 # Modelo Ollama
-llm = ChatOllama(model="mistral", base_url="http://localhost:11434")
+llm = ChatOllama(model=OLLAMA_MODEL, base_url=OLLAMA_BASE_URL)
 
 # Prompt restritivo e direto com o manual incorporado
 template = (
@@ -56,4 +57,4 @@ def index():
     return render_template("index.html", resposta=resposta)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=FLASK_DEBUG)
