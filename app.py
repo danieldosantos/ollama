@@ -3,10 +3,12 @@ from langchain_ollama import ChatOllama
 from langchain.prompts import PromptTemplate
 from log_suporte import init_db, salvar_log
 from pathlib import Path
+import logging
 import re
 from config import OLLAMA_BASE_URL, OLLAMA_MODEL, FLASK_DEBUG
 
 app = Flask(__name__)
+logging.basicConfig(level=logging.INFO)
 init_db()
 
 # Caminho base
@@ -14,8 +16,14 @@ BASE_DIR = Path(__file__).resolve().parent
 
 # Texto completo do manual
 arquivo_manual = BASE_DIR / "documentacao_estruturada.txt"
-with open(arquivo_manual, "r", encoding="utf-8") as f:
-    manual_text = f.read()
+manual_text = ""
+manual_error = None
+try:
+    with open(arquivo_manual, "r", encoding="utf-8") as f:
+        manual_text = f.read()
+except FileNotFoundError:
+    manual_error = f"Arquivo {arquivo_manual} não encontrado."
+    logging.error(manual_error)
 
 # Modelo Ollama
 llm = ChatOllama(model=OLLAMA_MODEL, base_url=OLLAMA_BASE_URL)
@@ -41,7 +49,7 @@ prompt = PromptTemplate.from_template(template)
 @app.route("/", methods=["GET", "POST"])
 def index():
     resposta = ""
-    if request.method == "POST":
+    if request.method == "POST" and not manual_error:
         pergunta = request.form["pergunta"]
 
         raw = llm.invoke(prompt.format(question=pergunta))
@@ -54,7 +62,7 @@ def index():
         salvar_log(pergunta, resposta_limpa)
         resposta = resposta_limpa
 
-    return render_template("index.html", resposta=resposta)
+    return render_template("index.html", resposta=resposta, manual_error=manual_error)
 
 if __name__ == "__main__":
     app.run(debug=FLASK_DEBUG)
