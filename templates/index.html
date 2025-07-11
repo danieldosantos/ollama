@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Atendente Virtual C3PO</title>
+  <title>Atendente Virtual Prime</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background: #f8f9fa;
+      background: #f2f2f2;
       color: #333;
       display: flex;
       justify-content: center;
@@ -22,14 +22,14 @@
       background: #fff;
       padding: 2rem;
       border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
       max-width: 600px;
       width: 100%;
     }
 
     h1 {
       margin-top: 0;
-      color: #343a40;
+      color: #2c2c2c;
       text-align: center;
     }
 
@@ -46,8 +46,8 @@
 
     button {
       width: 100%;
-      background-color: #ffc107;
-      color: #212529;
+      background-color: #5c6f7b;
+      color: #fff;
       border: none;
       padding: 0.75rem;
       font-size: 1rem;
@@ -58,7 +58,7 @@
     }
 
     button:hover {
-      background-color: #e0a800;
+      background-color: #45545d;
     }
 
     .sugestoes {
@@ -72,7 +72,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #f1f3f5;
+      background: #e6e6e6;
       padding: 0.5rem;
       border-radius: 8px;
     }
@@ -81,11 +81,16 @@
       width: auto;
       padding: 0.25rem 0.5rem;
       font-size: 0.875rem;
+      background-color: #5c6f7b;
+    }
+
+    .sugestoes button:hover {
+      background-color: #45545d;
     }
 
     .resposta {
       margin-top: 1.5rem;
-      background-color: #e9ecef;
+      background-color: #f0f0f0;
       padding: 1rem;
       border-radius: 8px;
       white-space: pre-wrap;
@@ -111,61 +116,65 @@
 </head>
 <body>
   <div class="chat-container">
-    <h1>Olá, eu sou o C3PO 🤖</h1>
-  <form method="post">
-    <textarea name="pergunta" placeholder="Digite sua pergunta sobre a plataforma Nexxo..." required></textarea>
-    <button type="submit">Enviar</button>
-  </form>
-  <ul class="sugestoes">
-    <li>
-      <span>Qual é o link de acesso à plataforma Nexxo?</span>
-      <button type="button" class="perguntar" data-text="Qual é o link de acesso à plataforma Nexxo?">Perguntar</button>
-    </li>
-    <li>
-      <span>Como faço login na plataforma?</span>
-      <button type="button" class="perguntar" data-text="Como faço login na plataforma?">Perguntar</button>
-    </li>
-    <li>
-      <span>Como criar um novo frete?</span>
-      <button type="button" class="perguntar" data-text="Como criar um novo frete?">Perguntar</button>
-    </li>
-    <li>
-      <span>Qual é o WhatsApp de suporte oficial?</span>
-      <button type="button" class="perguntar" data-text="Qual é o WhatsApp de suporte oficial?">Perguntar</button>
-    </li>
-    <li>
-      <span>Como consultar o status de um frete na seção “Viagens”?</span>
-      <button type="button" class="perguntar" data-text="Como consultar o status de um frete na seção 'Viagens'?">Perguntar</button>
-    </li>
-    <li>
-      <span>Como acessar o Painel de Negociações para falar com motoristas?</span>
-      <button type="button" class="perguntar" data-text="Como acessar o Painel de Negociações para falar com motoristas?">Perguntar</button>
-    </li>
-    <li>
-      <span>Como adicionar paradas intermediárias ao criar um frete?</span>
-      <button type="button" class="perguntar" data-text="Como adicionar paradas intermediárias ao criar um frete?">Perguntar</button>
-    </li>
-    <li>
-      <span>Como pausar temporariamente um frete?</span>
-      <button type="button" class="perguntar" data-text="Como pausar temporariamente um frete?">Perguntar</button>
-    </li>
-    <li>
-      <span>Como cadastrar um transportador (CNPJ ou CPF) e adicionar veículos?</span>
-      <button type="button" class="perguntar" data-text="Como cadastrar um transportador (CNPJ ou CPF) e adicionar veículos?">Perguntar</button>
-    </li>
-    <li>
-      <span>Como desconsiderar um motorista que não foi escolhido?</span>
-      <button type="button" class="perguntar" data-text="Como desconsiderar um motorista que não foi escolhido?">Perguntar</button>
-    </li>
-  </ul>
-  {% if resposta %}
-    <div class="resposta">
-      <strong>Resposta de C3PO:</strong><br>
-      {{ resposta }}
+    <h1>Olá, eu sou o Prime 🤖</h1>
+    <form method="post">
+      <textarea name="pergunta" placeholder="Digite sua pergunta sobre a plataforma Nexxo..." required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+
+    {% if resposta %}
+      <div class="resposta">
+        <strong>Resposta de Prime:</strong><br>
+        {{ resposta }}
       </div>
-  {% endif %}
-  <div class="footer">C3PO - Assistente oficial da Plataforma Nexxo</div>
+    {% endif %}
+
+    <ul class="sugestoes">
+      <li>
+        <span>Qual é o link de acesso à plataforma Nexxo?</span>
+        <button type="button" class="perguntar" data-text="Qual é o link de acesso à plataforma Nexxo?">Perguntar</button>
+      </li>
+      <li>
+        <span>Como faço login na plataforma?</span>
+        <button type="button" class="perguntar" data-text="Como faço login na plataforma?">Perguntar</button>
+      </li>
+      <li>
+        <span>Como criar um novo frete?</span>
+        <button type="button" class="perguntar" data-text="Como criar um novo frete?">Perguntar</button>
+      </li>
+      <li>
+        <span>Qual é o WhatsApp de suporte oficial?</span>
+        <button type="button" class="perguntar" data-text="Qual é o WhatsApp de suporte oficial?">Perguntar</button>
+      </li>
+      <li>
+        <span>Como consultar o status de um frete na seção “Viagens”?</span>
+        <button type="button" class="perguntar" data-text="Como consultar o status de um frete na seção 'Viagens'?">Perguntar</button>
+      </li>
+      <li>
+        <span>Como acessar o Painel de Negociações para falar com motoristas?</span>
+        <button type="button" class="perguntar" data-text="Como acessar o Painel de Negociações para falar com motoristas?">Perguntar</button>
+      </li>
+      <li>
+        <span>Como adicionar paradas intermediárias ao criar um frete?</span>
+        <button type="button" class="perguntar" data-text="Como adicionar paradas intermediárias ao criar um frete?">Perguntar</button>
+      </li>
+      <li>
+        <span>Como pausar temporariamente um frete?</span>
+        <button type="button" class="perguntar" data-text="Como pausar temporariamente um frete?">Perguntar</button>
+      </li>
+      <li>
+        <span>Como cadastrar um transportador (CNPJ ou CPF) e adicionar veículos?</span>
+        <button type="button" class="perguntar" data-text="Como cadastrar um transportador (CNPJ ou CPF) e adicionar veículos?">Perguntar</button>
+      </li>
+      <li>
+        <span>Como desconsiderar um motorista que não foi escolhido?</span>
+        <button type="button" class="perguntar" data-text="Como desconsiderar um motorista que não foi escolhido?">Perguntar</button>
+      </li>
+    </ul>
+
+    <div class="footer">Prime - Assistente virtual da Plataforma Nexxo</div>
   </div>
+
   <script>
     document.querySelectorAll('.perguntar').forEach(btn => {
       btn.addEventListener('click', () => {
